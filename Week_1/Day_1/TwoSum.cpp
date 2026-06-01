@@ -1,3 +1,8 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -32,3 +37,15 @@ public:
         return {-1, -1};
     }
 };
+
+int main() {
+    vector<int> nums = {2, 7, 11, 15};
+    int target = 9;
+
+    Solution obj;
+    vector<int> ans = obj.twoSum(nums, target);
+
+    cout << "Indices: " << ans[0] << " " << ans[1] << endl;
+
+    return 0;
+}
