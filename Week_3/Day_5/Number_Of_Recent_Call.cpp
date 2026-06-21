@@ -1,0 +1,37 @@
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+class RecentCounter {
+    int counter;
+    queue<int> q;
+
+public:
+    RecentCounter() {
+        counter = 0;
+    }
+
+    int ping(int t) {
+        counter++;
+        q.push(t);
+
+        while (!q.empty() && q.front() < t - 3000) {
+            counter--;
+            q.pop();
+        }
+
+        return counter;
+    }
+};
+
+int main() {
+    RecentCounter rc;
+
+    cout << rc.ping(1) << endl;      // 1
+    cout << rc.ping(100) << endl;    // 2
+    cout << rc.ping(3001) << endl;   // 3
+    cout << rc.ping(3002) << endl;   // 3
+
+    return 0;
+}
